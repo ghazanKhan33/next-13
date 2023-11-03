@@ -16,7 +16,7 @@ const nextConfig = {
     generateEtags: false,
     headers: async()=> ([
         {
-            source: '*json',
+            source: '/*json',
             header: [
                 {
                     key: 'Cache-Control',
@@ -25,17 +25,17 @@ const nextConfig = {
             ]
         },
         {
-            source: 'static*.{css,js,png,jpg,gif,svg,map}',
+            source: '/static*.{css,js,png,jpg,gif,svg,map}',
         },
         {
-            source: 'logo.png',
+            source: '/logo.png',
         },
         {
-            source: 'favicon.{png,jpg,ico}',
+            source: '/favicon.{png,jpg,ico}',
         },
         {
-            source: '*',
-            headers: [
+            source: '/*',
+            header: [
                 {
                     key: 'ETag',
                     value: ''
