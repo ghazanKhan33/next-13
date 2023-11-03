@@ -1,3 +1,5 @@
+const { sources } = require('next/dist/compiled/webpack/webpack');
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     output: 'standalone',
@@ -11,38 +13,50 @@ const nextConfig = {
         'www.app.dakotasoft.com',
       ],
     },
-    headers: async()=> ([{
-      'ETag': 'DynamicallyGenerated',
-      'Cache-Control': 'public,max-age=31536000,immutable',
-    }]),
-    routes: [
-      {
-        route: '/*.json',
-        headers: {
-          'Cache-Control': 'no-cache',
+    generateEtags: false,
+    headers: async()=> ([
+        {
+            source: '/*json',
+            header: [
+                {
+                    key: 'Cache-Control',
+                    value: 'no-cache'
+                }
+            ]
         },
-      },
-      {
-        route: '/static/*.{css,js,png,jpg,gif,svg,map}',
-      },
-      {
-        route: '/logo.png',
-      },
-      {
-        route: '/favicon.{png,jpg,ico}',
-      },
-      {
-        route: '/*',
-        headers: {
-          'ETag': '',
-          'Cache-Control': 'private, no-cache, no-store, must-revalidate',
-          pragma: 'no-cache',
-          expires: 'Sat, 01 Jan 2000 00:00:00 GMT',
+        {
+            source: '/static/*.{css,js,png,jpg,gif,svg,map}',
         },
-      },
-    ],
+        {
+            source: '/logo.png',
+        },
+        {
+            source: '/favicon.{png,jpg,ico}',
+        },
+        {
+            source: '/*',
+            headers: [
+                {
+                    key: 'ETag',
+                    value: ''
+                },
+                {
+                    key: 'Cache-Control',
+                    value: 'private, no-cache, no-store, must-revalidate'
+                },
+                {
+                    key: 'pragma',
+                    value: 'no-cache',
+                  },
+                  {
+                    key: 'expires',
+                    value: 'Sat, 01 Jan 2000 00:00:00 GMT',
+                  },
+            ],
+    
+        }
+
+    ])
   };
-  
-  module.exports = nextConfig;
 
 module.exports = nextConfig
