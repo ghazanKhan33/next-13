@@ -11,10 +11,10 @@ const nextConfig = {
         'www.app.dakotasoft.com',
       ],
     },
-    headers: {
+    headers: async()=> ({
       'ETag': 'DynamicallyGenerated',
       'Cache-Control': 'public,max-age=31536000,immutable',
-    },
+    }),
     routes: [
       {
         route: '/*.json',
