@@ -14,49 +14,58 @@ const nextConfig = {
       ],
     },
     generateEtags: false,
-    headers: async()=> ([
-        {
-            source: '/*json',
-            header: [
-                {
-                    key: 'Cache-Control',
-                    value: 'no-cache'
-                }
-            ]
-        },
-        {
-            source: '/static*.{css,js,png,jpg,gif,svg,map}',
-        },
-        {
-            source: '/logo.png',
-        },
-        {
-            source: '/favicon.{png,jpg,ico}',
-        },
-        {
-            source: '/*',
-            header: [
-                {
-                    key: 'ETag',
-                    value: ''
-                },
-                {
-                    key: 'Cache-Control',
-                    value: 'private, no-cache, no-store, must-revalidate'
-                },
-                {
-                    key: 'pragma',
-                    value: 'no-cache',
-                  },
-                  {
-                    key: 'expires',
-                    value: 'Sat, 01 Jan 2000 00:00:00 GMT',
-                  },
+    async headers() {
+        return [
+          {
+            source: '/(.*).json',
+            headers: [
+              {
+                key: 'Cache-Control',
+                value: 'no-cache',
+              },
             ],
-    
-        }
-
-    ])
+          },
+          {
+            source: '/static/(.*)',
+            headers: [
+              {
+                key: 'Cache-Control',
+                value: 'public, max-age=31536000, immutable',
+              },
+            ],
+          },
+          {
+            source: '/(logo.png|favicon.(png|jpg|ico))',
+            headers: [
+              {
+                key: 'Cache-Control',
+                value: 'public, max-age=31536000, immutable',
+              },
+            ],
+          },
+          {
+            source: '/(.*)',
+            headers: [
+              {
+                key: 'ETag',
+                value: 'DynamicallyGenerated',
+              },
+              {
+                key: 'Cache-Control',
+                value: 'private, no-cache, no-store, must-revalidate',
+              },
+              {
+                key: 'pragma',
+                value: 'no-cache',
+              },
+              {
+                key: 'expires',
+                value: 'Sat, 01 Jan 2000 00:00:00 GMT',
+              },
+            ],
+          },
+        ];
+      },
   };
 
 module.exports = nextConfig
