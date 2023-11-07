@@ -37,20 +37,20 @@ module.exports = {
         },
       ];
     },
-    async navigationFallback() {
-      return {
-        rewrite: '/index.html',
-        exclude: [
-          '/static/css/(.*)',
-          '/static/media/.*\\.(png|jpg|gif|svg)',
-          '/static/js/(.*)',
-        ],
-      };
-    },
-    async mimeTypes() {
-      return {
-        '.json': 'text/json',
-      };
-    },
+    // async navigationFallback() {
+    //   return {
+    //     rewrite: '/index.html',
+    //     exclude: [
+    //       '/static/css/(.*)',
+    //       '/static/media/.*\\.(png|jpg|gif|svg)',
+    //       '/static/js/(.*)',
+    //     ],
+    //   };
+    // },
+    // async mimeTypes() {
+    //   return {
+    //     '.json': 'text/json',
+    //   };
+    // },
   };
   
