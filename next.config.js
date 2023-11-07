@@ -2,19 +2,6 @@ module.exports = {
     async headers() {
       return [
         {
-          source: '/(.*)', // Match all routes
-          headers: [
-            {
-              key: 'ETag',
-              value: 'DynamicallyGenerated',
-            },
-            {
-              key: 'Cache-Control',
-              value: 'public,max-age=31536000,immutable',
-            },
-          ],
-        },
-        {
           source: '/.*\\.json',
           headers: [
             {
@@ -23,25 +10,21 @@ module.exports = {
             },
           ],
         },
-        {
-          source: '/static/.*\\.(css|js|png|jpg|gif|svg|map)',
-          // No specific headers defined for this route
-        },
-        {
-          source: '/logo.png',
-          // No specific headers defined for this route
-        },
-        {
-          source: '/favicon.(png|jpg|ico)',
-          // No specific headers defined for this route
-        },
       ];
     },
     async rewrites() {
       return [
         {
-          source: '/(.*)',
-          destination: '/index.html',
+          source: '/static/.*\\.(css|js|png|jpg|gif|svg|map)',
+          destination: '/static/...your-destination-path', // Update with your actual destination
+        },
+        {
+          source: '/logo.png',
+          destination: '/...your-destination-path', // Update with your actual destination
+        },
+        {
+          source: '/favicon.(png|jpg|ico)',
+          destination: '/...your-destination-path', // Update with your actual destination
         },
       ];
     },
