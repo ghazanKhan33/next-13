@@ -25,8 +25,9 @@ module.exports = {
   async redirects() {
     return [
       {
-        source: "/*",
-        destination: "/index.html"
+        source: '/:path*',
+        destination: '/index.html',
+        permanent: false,
       }
     ];
   },
