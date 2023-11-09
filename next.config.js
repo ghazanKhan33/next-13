@@ -1,13 +1,13 @@
+
 module.exports = {
   async rewrites() {
     return [
       {
-        source: "/static/:path*.{css,js,png,jpg,gif,svg,map}",
-        destination: "/static/:path*"
-      },
-      {
         source: "/favicon.{png,jpg,ico}",
-        destination: "/favicon/:file*"
+        destination: "/favicon/:file*",
+        has: {
+          file: /\.(png|jpg|ico)$/
+        }
       }
     ];
   },
