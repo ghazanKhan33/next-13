@@ -23,5 +23,4 @@ module.exports = {
     }
   ]},
   generateEtags: false,
-  output: 'export',
 };
