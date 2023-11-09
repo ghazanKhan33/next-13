@@ -1,4 +1,3 @@
-
 module.exports = {
   async rewrites() {
     return [
@@ -8,6 +7,18 @@ module.exports = {
         has: {
           file: /\.(png|jpg|ico)$/
         }
+      },
+      {
+        source: "/static/css/:path*",
+        destination: "/static/css/:path*"
+      },
+      {
+        source: "/static/media/:path*.{png,jpg,gif,svg}",
+        destination: "/static/media/:path*"
+      },
+      {
+        source: "/static/js/:path*",
+        destination: "/static/js/:path*"
       }
     ];
   },
@@ -15,8 +26,7 @@ module.exports = {
     return [
       {
         source: "/*",
-        destination: "/index.html",
-        exclude: ["/static/css/*", "/static/media/*.{png,jpg,gif,svg}", "/static/js/*"]
+        destination: "/index.html"
       }
     ];
   },
