@@ -1,18 +1,18 @@
 module.exports = {
   async rewrites(){ 
     return [
-    {
-      source: "/static/*.{css,js,png,jpg,gif,svg,map}",
-      destination: "/static/:ext*"
-    },
-    {
-      source: "/logo.png",
-      destination: "/logo.png"
-    },
-    {
-      source: "/favicon.{png,jpg,ico}",
-      destination: "/favicon/:file*"
-    }
+      {
+        source: "/static/:path*.{css,js,png,jpg,gif,svg,map}",
+        destination: "/static/:path*"
+      },
+      {
+        source: "/logo.png",
+        destination: "/logo.png"
+      },
+      {
+        source: "/favicon.{png,jpg,ico}",
+        destination: "/favicon/:file*"
+      }
   ]},
   async redirects() {
     return[
