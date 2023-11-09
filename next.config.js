@@ -3,7 +3,7 @@ module.exports = {
     return [
     {
       source: "/static/*.{css,js,png,jpg,gif,svg,map}",
-      destination: "/static/:path*"
+      destination: "/static/:ext*"
     },
     {
       source: "/logo.png",
@@ -11,7 +11,7 @@ module.exports = {
     },
     {
       source: "/favicon.{png,jpg,ico}",
-      destination: "/favicon/:path*"
+      destination: "/favicon/:file*"
     }
   ]},
   async redirects() {
