@@ -1,35 +1,61 @@
+/** @type {import('next').NextConfig} */
 module.exports = {
-  async rewrites() {
-    return [
-      {
-        source: "/favicon.{png,jpg,ico}",
-        destination: "/favicon/:file*",
-        has: {
-          file: /\.(png|jpg|ico)$/
-        }
-      },
-      {
-        source: "/static/css/:path*",
-        destination: "/static/css/:path*"
-      },
-      {
-        source: "/static/media/:path*.{png,jpg,gif,svg}",
-        destination: "/static/media/:path*"
-      },
-      {
-        source: "/static/js/:path*",
-        destination: "/static/js/:path*"
-      }
-    ];
+  reactStrictMode: true,
+  trailingSlash: false,
+  images: {
+    unoptimized: true,
   },
-  async redirects() {
-    return [
-      {
-        source: '/:path*',
-        destination: '/index.html',
-        permanent: false,
-      }
-    ];
+  headers: {
+    ETag: 'DynamicallyGenerated',
+    'Cache-Control': 'public,max-age=31536000,immutable',
   },
-  generateEtags: false,
+  rewrites: [
+    {
+      source: '/*.json',
+      headers: {
+        'Cache-Control': 'no-cache',
+      },
+    },
+    {
+      source: '/static/*.{css,js,png,jpg,gif,svg,map}',
+      destination: '/static/*.{css,js,png,jpg,gif,svg,map}',
+    },
+    {
+      source: '/logo.png',
+      destination: '/logo.png',
+    },
+    {
+      source: '/favicon.{png,jpg,ico}',
+      destination: '/favicon.{png,jpg,ico}',
+    },
+    {
+      source: '/*',
+      destination: '/index.html',
+      exclude: ['/static/css/*', '/static/media/*.{png,jpg,gif,svg}', '/static/js/*'],
+    },
+  ],
+  env: {
+    networking: {
+      allowedIpRanges: [
+        'AzureFrontDoor.Backend',
+        '168.62.172.58/32',
+      ],
+    },
+    forwardingGateway: {
+      requiredHeaders: {
+        'X-Azure-FDID': 'ADDED_DURING_DEPLOYMENT',
+      },
+      allowedForwardedHosts: [
+        'ADDED_DURING_DEPLOYMENT',
+        'app.dakotasoft.com',
+        'www.app.dakotasoft.com',
+      ],
+    },
+    responseOverrides: {
+      401: {
+        statusCode: 302,
+        redirect: '/login',
+      },
+    },
+  },
 };
