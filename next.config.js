@@ -5,17 +5,20 @@ module.exports = {
   images: {
     unoptimized: true,
   },
-  headers: {
-    ETag: 'DynamicallyGenerated',
-    'Cache-Control': 'public,max-age=31536000,immutable',
-  },
-  rewrites: [
-    {
-      source: '/*.json',
-      headers: {
-        'Cache-Control': 'no-cache',
+  async headers() {
+    return [
+      {
+        source: "/(.*?)",
+        headers: [
+          {
+            'ETag': 'DynamicallyGenerated',
+            'Cache-Control': 'public,max-age=31536000,immutable',
+          },
+        ],
       },
-    },
+    ]
+  },
+  async rewrites() { return [
     {
       source: '/static/*.{css,js,png,jpg,gif,svg,map}',
       destination: '/static/*.{css,js,png,jpg,gif,svg,map}',
@@ -33,7 +36,7 @@ module.exports = {
       destination: '/index.html',
       exclude: ['/static/css/*', '/static/media/*.{png,jpg,gif,svg}', '/static/js/*'],
     },
-  ],
+  ]},
   env: {
     networking: {
       allowedIpRanges: [
