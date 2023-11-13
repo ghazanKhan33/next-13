@@ -37,28 +37,5 @@ module.exports = {
       exclude: ['/static/css/*', '/static/media/*.{png,jpg,gif,svg}', '/static/js/*'],
     },
   ]},
-  env: {
-    networking: {
-      allowedIpRanges: [
-        'AzureFrontDoor.Backend',
-        '168.62.172.58/32',
-      ],
-    },
-    forwardingGateway: {
-      requiredHeaders: {
-        'X-Azure-FDID': 'ADDED_DURING_DEPLOYMENT',
-      },
-      allowedForwardedHosts: [
-        'ADDED_DURING_DEPLOYMENT',
-        'app.dakotasoft.com',
-        'www.app.dakotasoft.com',
-      ],
-    },
-    responseOverrides: {
-      401: {
-        statusCode: 302,
-        redirect: '/login',
-      },
-    },
-  },
+
 };
