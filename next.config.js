@@ -11,9 +11,13 @@ module.exports = {
         source: "/(.*?)",
         headers: [
           {
-            'ETag': 'DynamicallyGenerated',
-            'Cache-Control': 'public,max-age=31536000,immutable',
+            key: 'ETag',
+            value: 'DynamicallyGenerated',
           },
+          {
+            key: 'Cache-Control',
+            value: 'public,max-age=31536000,immutable',
+          }
         ],
       },
     ]
