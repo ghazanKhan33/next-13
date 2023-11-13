@@ -37,7 +37,7 @@ module.exports = {
         destination: '/favicon.$1',
       },
       {
-        source: '/*',
+        source: '/(.*)',
         destination: '/index.html',
       },
     ];
