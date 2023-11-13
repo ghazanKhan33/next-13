@@ -39,7 +39,6 @@ module.exports = {
       {
         source: '/*',
         destination: '/index.html',
-        exclude: ['/static/css/*', '/static/media/*.{png,jpg,gif,svg}', '/static/js/*'],
       },
     ];
   }  
