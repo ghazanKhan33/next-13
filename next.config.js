@@ -22,24 +22,26 @@ module.exports = {
       },
     ]
   },
-  async rewrites() { return [
-    {
-      source: '/static/*.{css,js,png,jpg,gif,svg,map}',
-      destination: '/static/*.{css,js,png,jpg,gif,svg,map}',
-    },
-    {
-      source: '/logo.png',
-      destination: '/logo.png',
-    },
-    {
-      source: '/favicon.{png,jpg,ico}',
-      destination: '/favicon.{png,jpg,ico}',
-    },
-    {
-      source: '/*',
-      destination: '/index.html',
-      exclude: ['/static/css/*', '/static/media/*.{png,jpg,gif,svg}', '/static/js/*'],
-    },
-  ]},
+  async rewrites() {
+    return [
+      {
+        source: '/static/(.*)\\.(css|js|png|jpg|gif|svg|map)',
+        destination: '/static/$1',
+      },
+      {
+        source: '/logo.png',
+        destination: '/logo.png',
+      },
+      {
+        source: '/favicon\\.(png|jpg|ico)',
+        destination: '/favicon.$1',
+      },
+      {
+        source: '/*',
+        destination: '/index.html',
+        exclude: ['/static/css/*', '/static/media/*.{png,jpg,gif,svg}', '/static/js/*'],
+      },
+    ];
+  }  
 
 };
