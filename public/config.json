@@ -1,0 +1,26 @@
+{
+    "auth": {
+        "domain"  : "auth2.artemis-dev.dakotasoft.com",
+        "clientId": "KaGuJHJc2Jdf3625YblZ6ZEsOfy6MvEO",
+        "audience": "https://app-dev.dakotasoft.com/"
+    },
+    "backend": "https://gateway.artemis.local:8443/",
+    "cdnUrl": "https://content.artemis-dev.dakotasoft.com/",
+    "appInsights": {
+        "enabled": true,
+        "instrumentationKey": "a346dfb5-2495-4a6a-a08f-e5ba471ef266",
+        "appId": "01f4b0d0-f4ff-4541-b4d1-fb2a7803b26e",
+        "endpointUrl": "https://gateway.artemis.local:8443/analytics",
+        "__globalUrl": "https://dc.applicationinsights.azure.com/v2/track",
+        "disableCookies": false,
+        "correlationHeaderExcludes": [ ],
+        "correlationHeaderDomains": [ ],
+        "cookieDomain": null
+    },
+    "helpUrl": "https://support.dakotasoft.com/portal/en/kb/dakota-inspections",
+    "appInfo": {
+        "version": "1.0.0",
+        "environment": "LocalDevelopment",
+        "name": "Dakota Software (Local)"
+    }
+}

@@ -1,0 +1,4 @@
+{
+    "version": "1.0.0",
+    "comment": "Do not delete, move or alter this file. It is used by the cache buster and CI/CD *at build time*. If the value must be modified, match config.json to prevent chain reloads locally"
+}
