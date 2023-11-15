@@ -1,26 +1,18 @@
-import { defineConfig, loadEnv } from 'vite'
 import react from '@vitejs/plugin-react'
+import { defineConfig } from 'vite';
 
-// https://vitejs.dev/config/
-export default defineConfig(({mode})=>{
- const env = loadEnv(mode, process.cwd(),'')
-
- return (
-  {
-  
+  export default defineConfig({
     plugins: [react()],
     server: {
-      host: env.REACT_APP_SERVER_HOST,
-      port: parseInt(env.VITE_REACT_APP_SERVER_PORT),
+      host: "app.artemis.local",
+      port: 3000,
       // https: {
       //   key: path.resolve(__dirname, process.env.REACT_APP_SERVER_HTTPS_KEY),
       //   cert: path.resolve(__dirname, process.env.REACT_APP_SERVER_HTTPS_CERT),
       // },
-      origin:env.REACT_APP_SERVER_ORIGIN,
+      origin:"app.artemis.local:3000",
     },
     build: {
-      sourcemap: env.REACT_APP_BUILD_SOURCEMAP === 'true',
+      sourcemap: true,
     },
-  }
- )
-})
+  });
